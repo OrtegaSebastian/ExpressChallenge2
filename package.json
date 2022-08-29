@@ -1,0 +1,15 @@
+{
+  "name": "serverexpress",
+  "version": "1.0.0",
+  "description": "Develope an express server implement end points and include a txt with products",
+  "main": "8080",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ortega Sebastian",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
