@@ -25,31 +25,30 @@ module.exports = class Container {
             }      
     }
 
-    async getAll() {
-        try {
-            let products;
-            if (await fs.stat(`${this.file}`, async () => {
-                const fileData = await fs.readFileSync(`${this.file}`, 'utf-8');
-                console.log(fileData);
-            products = fileData.toString().split("\n");
-            }))
-            {
-            return JSON.parse(products);
-            } else {
-            return `${this.file} not found`;
+
+    getAll(){
+        if (fs.existsSync(this.file)){
+            const data = fs.readFileSync(`${this.file}`, 'utf-8');
+            if (data) {
+                return data;
+            }else{
+                return 'Not data Found';
             }
-        } catch (error) {
-            return error;
         }
+        return 'File not Found'; 
     }
         
     getRandomProduct(){
-        const data = fs.readFileSync(`${this.archivo}`,"utf-8")
+        let data;
+        if (fs.existsSync(this.file)){
+            data = fs.readFileSync(`${this.file}`, 'utf-8');
+        }
         const parse = JSON.parse(data)
         const random = parse[Math.floor(Math.random()* parse.length)]
-        console.log(random)
-        return random 
+        return JSON.stringify(random) 
     }
+        
+
 }
 
 
